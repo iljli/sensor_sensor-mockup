@@ -1,5 +1,9 @@
+* {
+  /* border: 1px solid red; */
+}
+
 .App {
-  text-align: center;
+  /* text-align: center; */
 }
 
 .App-logo {
@@ -32,7 +36,43 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.inputContainer {
+  display: flex;
+  /* justify-content: center; */
+  /* border: 1px solid red; */
+}
+
+.inputForm {
+  flex-direction: column;
+  font-size: medium;
+  height: 50px;
+  width: 300px;
+  /* border: 1px solid red; */
+  text-align: right;
+}
+
+label {
+  padding: 10px;
+}
+
+.inputField {
+  /* border: 1px solid yellow; */
+  text-align: right;
+}
+
+.inputFieldUnit {
+  border: 1px solid yellow;
+  text-align: right;
+  padding-left: 10px;
+}
+
+.align-right {
+  text-align: right;
+  border: 0;
 }
