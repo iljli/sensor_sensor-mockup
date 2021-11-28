@@ -40,6 +40,7 @@ function App() {
   const [mockData, setMockData] = useState(mockDataInitial);
   const [dateEpoch, setDateEpoch] = useState();
   const [timeEpoch, setTimeEpoch] = useState();
+  const [timeDiffEpoch, setTimeDiffEpoch] = useState();
   const [generatorSetting, setGeneratorSetting] = useState(generatorSettingInitial);
 
 
@@ -104,8 +105,13 @@ function App() {
   }
 
   const handleTimeChange = (event) => {
-    setTimeEpoch(event.target.valueAsNumber * 1000);
+    setTimeEpoch(event.target.valueAsNumber);
     console.log(timeEpoch);
+  }
+
+  const handleTimeDiffChange = (event) => {
+    setTimeDiffEpoch(event.target.valueAsNumber);
+    console.log(timeDiffEpoch);
   }
 
   const handleInputChangeGenerator = (event) => {
@@ -149,8 +155,8 @@ function App() {
 
     for (let n = 0; n < generatorSetting.toalNumberOfDatasets; n++) {
       console.log(n * generatorSetting.timeInkrement)
-      let timeCalculated = (n * timeEpoch) + dateEpoch + timeEpoch;
-      // if (!timeEpoch) timeCalculated = ((n * 1000) + 1673712000000); // Not Working
+      console.log(`timeDiffEpoch: ${timeDiffEpoch}`)
+      let timeCalculated = (n * timeDiffEpoch) + dateEpoch + (timeEpoch);
 
       let humidityTmp = 0;
       let temperatureTmp = 0;
@@ -171,7 +177,7 @@ function App() {
 
       const oneDataElement = {
         "sensor_id": mockData.sensor_id,
-        "recorded_at": timeCalculated,
+        "recorded_at": timeCalculated, // time in seconds as Linux-Epoch
         "pressure": pressureTmp,
         "temperature": temperatureTmp,
         "humidity": humidityTmp,
@@ -289,7 +295,7 @@ function App() {
               <label htmlFor="timeInkrement">Timeinkrement [s]</label>
               <input className="inputField"
                 id="timeInkrement"
-                onChange={handleTimeChange}
+                onChange={handleTimeDiffChange}
                 type="number"
                 name="timeInkrement"
                 min="0"
