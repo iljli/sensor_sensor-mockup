@@ -93,7 +93,7 @@ function App() {
   }
 
   const handleInputChange = (event) => {
-    setMockData({ ...mockData, [event.target.name]: Number(event.target.value) })
+    setMockData({ ...mockData, [event.target.name]: event.target.value })
     console.log(mockData);
   }
 
@@ -196,7 +196,7 @@ function App() {
               <input className="inputField"
                 id="sensorID"
                 onChange={handleInputChange}
-                type="number"
+                type="text"
                 name="sensor_id"
                 min="0"
                 value={mockData.sensor_id}
@@ -211,7 +211,7 @@ function App() {
                 type="date"
                 name="time"
                 min="0"
-                value={dateEpoch}
+              // value={dateEpoch}
               />
             </div>
 
