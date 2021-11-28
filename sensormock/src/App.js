@@ -126,10 +126,10 @@ function App() {
         nextStep = startvalue;
         break;
       case 1:
-        nextStep = startvalue + stepheight;
+        nextStep = Number(startvalue) + Number(stepheight);
         break;
       case 2:
-        nextStep = startvalue - stepheight;
+        nextStep = Number(startvalue) - Number(stepheight);
         break;
       default:
         return startvalue;
@@ -170,8 +170,8 @@ function App() {
 
 
       const oneDataElement = {
-        "sensor_id": '1',       // ToDo
-        "time": timeCalculated,
+        "sensor_id": mockData.sensor_id,
+        "recorded_at": timeCalculated,
         "pressure": pressureTmp,
         "temperature": temperatureTmp,
         "humidity": humidityTmp,
