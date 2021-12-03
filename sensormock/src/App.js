@@ -51,7 +51,7 @@ function App() {
     e.preventDefault();
     const apiUrl = "http://localhost:3000/sensor";
 
-    setMockData({ time: dateEpoch + timeEpoch });
+    setMockData({ time: (dateEpoch + timeEpoch) });
     let options = {};
     if (generatedDataArray.length > 1) {
       options = {
@@ -101,11 +101,11 @@ function App() {
   const handleDateChange = (event) => {
     console.log(event.target)
     console.log(event.target.valueAsNumber);
-    setDateEpoch(Number(event.target.valueAsNumber));
+    setDateEpoch(Number(event.target.valueAsNumber) / 1000);
   }
 
   const handleTimeChange = (event) => {
-    setTimeEpoch(event.target.valueAsNumber);
+    setTimeEpoch(Number(event.target.valueAsNumber) / 1000);
     console.log(timeEpoch);
   }
 
@@ -289,7 +289,7 @@ function App() {
                 type="number"
                 name="toalNumberOfDatasets"
                 min="0"
-                max="100"
+                max="10000"
               />
 
               <label htmlFor="timeInkrement">Timeinkrement [s]</label>
