@@ -123,9 +123,10 @@ function App() {
 
 
   const randomwalk = (startvalue = 0, stepheight = 1) => {
-    const direction = (Math.floor(Math.random() * 3));
+    let direction = (Math.floor(Math.random() * 3));
     let nextStep = 0;
     if (stepheight < 1) stepheight = 1;
+    if (startvalue < 1) direction = 1;
 
     switch (direction) {
       case 0:
